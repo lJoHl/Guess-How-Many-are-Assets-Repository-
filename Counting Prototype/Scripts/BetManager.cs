@@ -28,24 +28,21 @@ public class BetManager : MonoBehaviour
         switch (figureButton)
         {
             case FigureButton.Sphere:
-                bettedSpheres += ControlBet(bettedSpheres, isAnIncrease); //evitar repetir la llamada betted figures
-                UpdateBet(bettedSpheres, spheresAmount);  //evitar repetir la llamada betted figures
+                bettedSpheres += ControlBet(bettedSpheres, spheresAmount, isAnIncrease);
                 break;
 
             case FigureButton.Cube:
-                bettedCubes += ControlBet(bettedCubes, isAnIncrease);
-                UpdateBet(bettedCubes, cubesAmount);
+                bettedCubes += ControlBet(bettedCubes, cubesAmount, isAnIncrease);
                 break;
 
             case FigureButton.Cylinder:
-                bettedCylinders += ControlBet(bettedCylinders, isAnIncrease);
-                UpdateBet(bettedCylinders, cylindersAmount);
+                bettedCylinders += ControlBet(bettedCylinders, cylindersAmount, isAnIncrease);
                 break;
         }
     }
 
 
-    private int ControlBet(int bettedFigures, bool isAnIncrease)
+    private int ControlBet(int bettedFigures, TextMeshProUGUI figuresAmount, bool isAnIncrease)
     {
         int valueToAdd = 0;
 
@@ -66,13 +63,9 @@ public class BetManager : MonoBehaviour
             }
         }
 
-        return valueToAdd;
-    }
-
-
-    private void UpdateBet(int bettedFigures, TextMeshProUGUI figuresAmount)
-    {
-        figuresAmount.text = bettedFigures.ToString();
+        figuresAmount.text = (bettedFigures + valueToAdd).ToString();
         totalAmount.text = totalBet.ToString();
+
+        return valueToAdd;
     }
 }
