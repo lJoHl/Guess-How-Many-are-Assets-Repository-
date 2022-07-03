@@ -8,16 +8,16 @@ using UnityEngine.UI;
 public class BetManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI spheresAmount;
-    private int bettedSpheres = 0; //usar ubyte
+    public int bettedSpheres = 0; //usar ubyte
 
     [SerializeField] private TextMeshProUGUI cubesAmount;
-    private int bettedCubes = 0; //usar ubyte
+    public int bettedCubes = 0; //usar ubyte
 
     [SerializeField] private TextMeshProUGUI cylindersAmount;
-    private int bettedCylinders = 0; //usar ubyte
+    public int bettedCylinders = 0; //usar ubyte
 
     [SerializeField] private TextMeshProUGUI totalAmount;
-    private int totalBet = 0; //int esta bien
+    public int totalBet = 0; //int esta bien
 
     private int maxBet = 99; //usar ubyte
     private int minBet = 0; //usar ubyte
@@ -37,6 +37,10 @@ public class BetManager : MonoBehaviour
 
             case FigureButton.Cylinder:
                 bettedCylinders += ControlBet(bettedCylinders, cylindersAmount, isAnIncrease);
+                break;
+
+            default:
+                ControlBet(totalBet, totalAmount, isAnIncrease);
                 break;
         }
     }

@@ -14,10 +14,10 @@ public class Counter : MonoBehaviour
     private string defaultCylindersText;
     private string defaultTotalText;
 
-    private int cubeCount = 0;
-    private int sphereCount = 0;
-    private int cylinderCount = 0;
-    private int totalCount = 0;
+    public int cubeCount = 0;  // ubyte
+    public int sphereCount = 0; // ubyte
+    public int cylinderCount = 0; // ubyte
+    public int totalCount = 0; // ubyte
 
     private bool isOnTriggerEnter = false;
 

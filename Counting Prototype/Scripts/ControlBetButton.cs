@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum FigureButton { Sphere, Cube, Cylinder }
+public enum FigureButton { Sphere, Cube, Cylinder, None }
 
 public class ControlBetButton : MonoBehaviour
 {
