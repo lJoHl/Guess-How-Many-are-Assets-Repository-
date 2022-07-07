@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnFigures(int figuresAmount)
     {
-        for (int i = 0; i <= figuresAmount; i++)
+        for (int i = 1; i <= figuresAmount; i++)
         {
             int figureIndex = Random.Range(0, figures.Length);
 
