@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button moreFigures;
     [SerializeField] private Button betAgain;
 
+    [SerializeField] private AudioSource finalScreenAudio;
+
     private bool isGameActive = false;
 
     private int gameMode;
@@ -105,15 +107,26 @@ public class GameManager : MonoBehaviour
         if (highBets == gameMode)
         {
             resultTextController.ControlText(true, false);
+
             moreFigures.gameObject.SetActive(true);
+            finalScreenAudio.pitch = 1;
         }
         else if (matchingBets == gameMode)
+        {
             resultTextController.ControlText(false, true);
+
+            finalScreenAudio.pitch = 2;
+        }
         else
+        {
             resultTextController.ControlText(false, false);
+
+            finalScreenAudio.pitch = .5f;
+        }
 
 
         betAgain.gameObject.SetActive(true);
+        finalScreenAudio.Play();
 
         lowBets = 0;
         highBets = 0;
