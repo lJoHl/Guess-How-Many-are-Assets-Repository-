@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,13 +20,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioSource finalScreenAudio;
 
-    private bool isGameActive = false;
-
     private int gameMode;
 
-    private int lowBets = 0;
-    private int highBets = 0;
-    private int matchingBets = 0;
+    private byte lowBets = 0;
+    private byte highBets = 0;
+    private byte matchingBets = 0;
 
 
     private void Start()
@@ -41,23 +38,23 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(int numberOfCounters)
     {
-        isGameActive = true;
         gameMode = numberOfCounters;
 
         titleScreen.SetActive(false);
-        GetChildrenTags(gameCounters.transform);
-        GetChildrenTags(betElements.transform);
+        ActivateGameModeElements(gameCounters.transform);
+        ActivateGameModeElements(betElements.transform);
     }
 
 
-    private void GetChildrenTags(Transform parent)  // cambiar el nombre del metodo
+    // Activates elements depending on the game mode
+    private void ActivateGameModeElements(Transform parent)
     {
         parent.gameObject.SetActive(true);
 
         foreach (Transform child in parent)
         {
             if (child.childCount > 0)
-                GetChildrenTags(child);
+                ActivateGameModeElements(child);
 
             switch (child.tag)
             {
@@ -86,10 +83,19 @@ public class GameManager : MonoBehaviour
 
         resultTextController.SetCurrentTextToAnEmptyString();
 
+        if (counter.totalCount == 0)
+        {
+            betManager.spheresAmount.text = "0";
+            betManager.cubesAmount.text = "0";
+            betManager.cylindersAmount.text = "0";
+            betManager.totalAmount.text = "0";
+        }
+
         StartCoroutine(SetFinalScreen(5));
     }
 
 
+    // Configures end screen elements
     private IEnumerator SetFinalScreen(int gameTime)
     {
         yield return new WaitForSeconds(gameTime);
@@ -133,6 +139,7 @@ public class GameManager : MonoBehaviour
         matchingBets = 0;
     }
 
+    // Defines the state of the counter
     private void CompareCounters(int bettedFigures, int figuresCount)
     {
         if (bettedFigures < figuresCount)
@@ -144,6 +151,19 @@ public class GameManager : MonoBehaviour
     }
 
 
+    // Defines the color of the counter text
+    public void CompareCounters(int bettedFigures, int figuresCount, TextMeshProUGUI figuresAmount)
+    {
+        if (bettedFigures < figuresCount)
+            figuresAmount.color = Color.red;
+        else if (bettedFigures > figuresCount)
+            figuresAmount.color = Color.yellow;
+        else
+            figuresAmount.color = Color.green;
+    }
+
+
+    // Restart the game
     public void BetAgainFunction()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

@@ -7,16 +7,16 @@ using UnityEngine.UI;
 
 public class BetManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI spheresAmount;
+    public TextMeshProUGUI spheresAmount;
     public int bettedSpheres = 0; //usar ubyte
 
-    [SerializeField] private TextMeshProUGUI cubesAmount;
+    public TextMeshProUGUI cubesAmount;
     public int bettedCubes = 0; //usar ubyte
 
-    [SerializeField] private TextMeshProUGUI cylindersAmount;
+    public TextMeshProUGUI cylindersAmount;
     public int bettedCylinders = 0; //usar ubyte
 
-    [SerializeField] private TextMeshProUGUI totalAmount;
+    public TextMeshProUGUI totalAmount;
     public int totalBet = 0; //int esta bien
 
     private int maxBet = 99; //usar ubyte
