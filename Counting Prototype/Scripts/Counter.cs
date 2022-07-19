@@ -1,28 +1,15 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
     private GameManager gameManager;
     private BetManager betManager;
 
-    /*
-    [SerializeField] private TextMeshProUGUI spheresText;
-    [SerializeField] private TextMeshProUGUI cubesText;
-    [SerializeField] private TextMeshProUGUI cylindersText;
-    [SerializeField] private TextMeshProUGUI totalText;
-
-    private string defaultSpheresText;
-    private string defaultCubesText;
-    private string defaultCylindersText;
-    private string defaultTotalText;
-    */
-
-    public int cubeCount = 0;  // ubyte
-    public int sphereCount = 0; // ubyte
-    public int cylinderCount = 0; // ubyte
-    public int totalCount = 0; // ubyte
+    public int cubeCount = 0;
+    public int sphereCount = 0;
+    public int cylinderCount = 0;
+    public int totalCount = 0;
 
     private bool isOnTriggerEnter = false;
 
@@ -31,12 +18,6 @@ public class Counter : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         betManager = GameObject.Find("BetManager").GetComponent<BetManager>();
-        /*
-        defaultSpheresText = spheresText.text;
-        defaultCubesText = cubesText.text;
-        defaultCylindersText = cylindersText.text;
-        defaultTotalText = totalText.text;
-        */
     }
 
 
@@ -58,6 +39,7 @@ public class Counter : MonoBehaviour
     }
 
 
+    // Updates the counter taking into account the type of figure that collided with the box
     private void ControlFiguresCount(Collider other)
     {
         switch (other.tag)
@@ -79,16 +61,18 @@ public class Counter : MonoBehaviour
     }
 
 
-    private int UpdateCount(int figureCount, TextMeshProUGUI figureText)
+    // Updates the counter taking into account if the figure entered or left the box
+    private int UpdateCount(int figureCount, TextMeshProUGUI figuresAmount)
     {
         int figuresValue = isOnTriggerEnter ? 1 : -1;
 
-        figureText.text = (figureCount + figuresValue).ToString();
+        figuresAmount.text = (figureCount + figuresValue).ToString();
 
         return figuresValue;
     }
 
 
+    // Updates the color of the counter text
     private void UpdateCountersColor()
     {
         gameManager.CompareCounters(betManager.bettedSpheres, sphereCount, betManager.spheresAmount);

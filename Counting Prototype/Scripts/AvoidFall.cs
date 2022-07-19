@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AvoidFall : MonoBehaviour
 {
-    private void Start()
-    {
-        
-    }
-
-
+    // Positions the figure at the value 0.5 of the y-axis when it falls off the map
     private void Update()
     {
         if (transform.position.y < 0)

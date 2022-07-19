@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
 
     private int gameMode;
 
-    private byte lowBets = 0;
-    private byte highBets = 0;
-    private byte matchingBets = 0;
+    private int lowBets = 0;
+    private int highBets = 0;
+    private int matchingBets = 0;
 
 
     private void Start()

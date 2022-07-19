@@ -16,8 +16,7 @@ public class ResultTextController : MonoBehaviour
     [SerializeField] private List<string> textToDisplay = new List<string>();
     
     private float timeToNextText;
-
-    private int currentText;  // ubyte
+    private int currentText;
     
 
     private void Start()
@@ -31,6 +30,7 @@ public class ResultTextController : MonoBehaviour
 
     private void Update()
     {
+        // exchanges the winning texts every so often
         if (currentText == 0 | currentText == 1)
         {
             timeToNextText += Time.deltaTime;
@@ -52,9 +52,10 @@ public class ResultTextController : MonoBehaviour
             sparksParticles.Stop();
         }
 
-        resultText.text = textToDisplay[currentText];
+        resultText.text = textToDisplay[currentText]; // update the resultText
 
 
+        // prevents the BGM from stopping
         if (!BGMAudio.isPlaying)
         {
             BGMAudio.Play();
@@ -63,12 +64,14 @@ public class ResultTextController : MonoBehaviour
     }
 
 
+    // Set text and bgm depending on game result
     public void ControlText(bool isAFullHighBet, bool winner)
     {
         currentText = winner ? 0 : isAFullHighBet ? 3 : 2;
 
         BGMAudio.clip = winner ? winnerBGM : isAFullHighBet ? bettingBGM : loserBGM;
     }
+
 
     public void SetCurrentTextToAnEmptyString()
     {

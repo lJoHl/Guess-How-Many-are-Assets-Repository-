@@ -1,28 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class BetManager : MonoBehaviour
 {
     public TextMeshProUGUI spheresAmount;
-    public int bettedSpheres = 0; //usar ubyte
+    public int bettedSpheres = 0;
 
     public TextMeshProUGUI cubesAmount;
-    public int bettedCubes = 0; //usar ubyte
+    public int bettedCubes = 0;
 
     public TextMeshProUGUI cylindersAmount;
-    public int bettedCylinders = 0; //usar ubyte
+    public int bettedCylinders = 0;
 
     public TextMeshProUGUI totalAmount;
-    public int totalBet = 0; //int esta bien
+    public int totalBet = 0;
 
-    private int maxBet = 99; //usar ubyte
-    private int minBet = 0; //usar ubyte
+    private int maxBet = 99;
+    private int minBet = 0;
 
 
+    // Increases or decreases the bet value depending on the figure to which the pressed button belongs
     public void selectButton(FigureButton figureButton, bool isAnIncrease)
     {
         switch (figureButton)
@@ -46,6 +44,7 @@ public class BetManager : MonoBehaviour
     }
 
 
+    // Increases or decreases the value bet depending on the button that has been pressed
     private int ControlBet(int bettedFigures, TextMeshProUGUI figuresAmount, bool isAnIncrease)
     {
         int valueToAdd = 0;

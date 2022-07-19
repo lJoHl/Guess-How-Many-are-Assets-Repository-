@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FiguresCollision : MonoBehaviour
@@ -15,6 +13,7 @@ public class FiguresCollision : MonoBehaviour
     }
 
 
+    // Makes figures play a sound when they collide, the sound only plays once
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag != "Sphere" & collision.gameObject.tag != "Cube" & collision.gameObject.tag != "Cylinder" & !hasSounded)
