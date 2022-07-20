@@ -45,22 +45,14 @@ public class ResultTextController : MonoBehaviour
                     currentText++;
             }
 
-            sparksParticles.Play();
+            sparksParticles.gameObject.SetActive(true);
         }
         else
         {
-            sparksParticles.Stop();
+            sparksParticles.gameObject.SetActive(false);
         }
 
         resultText.text = textToDisplay[currentText]; // update the resultText
-
-
-        // prevents the BGM from stopping
-        if (!BGMAudio.isPlaying)
-        {
-            BGMAudio.Play();
-            BGMAudio.loop = false;
-        }
     }
 
 
@@ -70,6 +62,13 @@ public class ResultTextController : MonoBehaviour
         currentText = winner ? 0 : isAFullHighBet ? 3 : 2;
 
         BGMAudio.clip = winner ? winnerBGM : isAFullHighBet ? bettingBGM : loserBGM;
+
+
+        if (!isAFullHighBet)
+        {
+            BGMAudio.Play();
+            BGMAudio.loop = false;
+        }
     }
 
 

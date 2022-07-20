@@ -6226,7 +6226,7 @@ MonoBehaviour:
   sparksParticles: {fileID: 539383196}
   BGMAudio: {fileID: 1648811354}
   winnerBGM: {fileID: 8300000, guid: e8031248876e2f540ad76f9a2a2cf17b, type: 3}
-  loserBGM: {fileID: 8300000, guid: 04ebd68c369921248a0262bac11a1d36, type: 3}
+  loserBGM: {fileID: 8300000, guid: 08ab3df1f2e092c45b472c0360d8f0be, type: 3}
   bettingBGM: {fileID: 8300000, guid: d89b57a399020f549ba279ebbc6f232e, type: 3}
   textToDisplay:
   - Congratulations

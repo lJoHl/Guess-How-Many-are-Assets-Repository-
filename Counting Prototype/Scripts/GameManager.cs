@@ -110,18 +110,18 @@ public class GameManager : MonoBehaviour
         CompareCounters(betManager.totalBet, counter.totalCount);
 
 
-        if (highBets == gameMode)
+        if (matchingBets == gameMode)
+        {
+            resultTextController.ControlText(false, true);
+
+            finalScreenAudio.pitch = 2;
+        }
+        else if (highBets == gameMode | lowBets == 0)
         {
             resultTextController.ControlText(true, false);
 
             moreFigures.gameObject.SetActive(true);
             finalScreenAudio.pitch = 1;
-        }
-        else if (matchingBets == gameMode)
-        {
-            resultTextController.ControlText(false, true);
-
-            finalScreenAudio.pitch = 2;
         }
         else
         {
